@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: Server_MWork
+  datasource:
+    url: "jdbc:mysql://localhost:3306/db_mwork"
+    username: root
+    password: Hieu@123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
