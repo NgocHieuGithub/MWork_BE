@@ -42,13 +42,14 @@ public class GroupServiceImpl implements GroupService{
 	@Override
 	public GroupResponse CreateGroup(CGroupRequest request) {
 		Group group = groupMapper.toGroup(request);
-		group.setLeader(request.getLeader());
+		User leader = userRepository.findById(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+		group.setLeader(leader);
 		group = groupRepository.save(group);
 		Group_details group_details = Group_details
 				.builder()
 				.isJoin(true)
 				.group(group)
-				.user(request.getLeader())
+				.user(leader)
 				.build();
 		groupDetailsRepository.save(group_details);
 		return groupMapper.toGroupResponse(group);
@@ -92,9 +93,9 @@ public class GroupServiceImpl implements GroupService{
 	}
 
 	@Override
-	public Boolean JoinGroup(JGroupRequest request) {
-		User user = userRepository.findById(request.getUser_id()).get();
-		Group group = groupRepository.findByCodeGroup(request.getCode_group());
+	public Boolean JoinGroup(String x) {
+		User user = userRepository.findById(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+		Group group = groupRepository.findByCodeGroup(x);
 		if (groupDetailsRepository.existsByUserAndGroup(user, group)) {
 			return false;
 		}

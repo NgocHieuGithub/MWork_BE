@@ -70,8 +70,8 @@ public class GroupController {
 	}
 	
 	@GetMapping("/join")
-	public ApiResponse<String> JoinGroup(@RequestBody JGroupRequest request){
-		if (groupImpl.JoinGroup(request)) {
+	public ApiResponse<String> JoinGroup(@RequestParam(value = "code_group") String code_group){
+		if (groupImpl.JoinGroup(code_group)) {
 			return ApiResponse.<String>builder().code(1000).result("Join group successfully").build();
 		}
 		return ApiResponse.<String>builder().code(1000).result("Join group not successfully").build();

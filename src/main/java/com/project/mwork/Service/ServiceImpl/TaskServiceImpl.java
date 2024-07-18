@@ -1,5 +1,8 @@
 package com.project.mwork.Service.ServiceImpl;
 
+import java.util.List;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.project.mwork.DTO.Request.UTaskRequest;
@@ -41,6 +44,12 @@ public class TaskServiceImpl implements TaskService{
 		task.setNameTask(request.getNameTask());
 		task.setUser(userRepository.findById(request.getUser_id()).get());
 		return taskMapper.toTaskResponse(taskRepository.save(task));
+	}
+
+	@Override
+	public List<TaskResponse> GetListTask(String id_group) {
+		String id_userString = SecurityContextHolder.getContext().getAuthentication().getName();
+		return taskRepository.GetListTask(id_group, id_userString);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.project.mwork.Controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,5 +40,8 @@ public class TaskController {
 	public ApiResponse<TaskResponse> UpdateTask(@RequestBody UTaskRequest request) {
 		return ApiResponse.<TaskResponse>builder().code(1000).result(taskServiceImpl.UpdateResponse(request)).build();
 	}
-	
+	@GetMapping("list")
+	public ApiResponse<List<TaskResponse>> GetListTask(@RequestParam(value = "id_group") String idString){
+		return ApiResponse.<List<TaskResponse>>builder().result(taskServiceImpl.GetListTask(idString)).build();
+	}
 }

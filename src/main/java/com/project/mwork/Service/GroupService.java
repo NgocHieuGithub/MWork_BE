@@ -13,5 +13,5 @@ public interface GroupService {
 	GroupResponse UpdateGroup(CGroupRequest request);
 	Boolean DeleteGroup(String id_group);
 	List<GroupResponse> GetListGroup();
-	Boolean JoinGroup(JGroupRequest jGroupRequest);
+	Boolean JoinGroup(String x);
 }
