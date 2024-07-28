@@ -78,24 +78,27 @@ public class GroupServiceImpl implements GroupService{
 			groupRepository.delete(groupRepository.findById(id_group).orElseThrow());
 			return true;
 		} catch (Exception e) {
+			log.info(e.toString());
 			return false;
 		}
 	}
 
 	@Override
 	public List<GroupResponse> GetListGroup() {
-		String id_user = SecurityContextHolder.getContext().getAuthentication().getName();
-		var jwwt = SecurityContextHolder.getContext().getAuthentication();
-		System.out.println("id_user: "  + jwwt.getCredentials() + " \n "+ jwwt.getDetails() +"\n "+ jwwt.getPrincipal() +"\n "+ jwwt.getName());
-		//User user = userRepository.findById(id_user).orElse(null);
-		//return groupRepository.findAll().stream().map(groupMapper::toGroupResponse).toList();
-		return groupRepository.GetListGroupByUser(id_user);
+		return groupRepository
+				.getGroups(SecurityContextHolder.getContext().getAuthentication().getName())
+				.stream()
+				.map(groupMapper::toGroupResponse)
+				.toList();
 	}
 
 	@Override
 	public Boolean JoinGroup(String x) {
 		User user = userRepository.findById(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		Group group = groupRepository.findByCodeGroup(x);
+		if (group == null) {
+			return false;
+		}
 		if (groupDetailsRepository.existsByUserAndGroup(user, group)) {
 			return false;
 		}

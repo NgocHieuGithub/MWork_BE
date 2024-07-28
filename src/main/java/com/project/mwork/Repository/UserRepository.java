@@ -15,7 +15,7 @@ public interface UserRepository extends JpaRepository<User, String>{
 //	@Query(value = "select NEW com.project.mwork.DTO.Response.UserResponse(u.id, u.name, u.username, u.email, u.sdt) from db_mwork.user u, db_mwork.group_details gd where gd.user_id = u.id and gd.group_id = :groupId ", nativeQuery = true)
 //	List<UserResponse> GetListUserInGroup(String groupId);
 	
-	@Query(value =  "SELECT NEW com.project.mwork.DTO.Response.UserResponse(u.id, u.name, u.username, u.email, u.sdt) " +
+	@Query(value =  "SELECT NEW com.project.mwork.DTO.Response.UserResponse(u.id, u.name, u.username, u.email, u.sdt, u.urlavt) " +
 		       "from User u Join u.groups gd where gd.group.id = :groupId")
 		List<UserResponse> GetListUserInGroup(@Param("groupId") String groupId);
 

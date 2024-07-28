@@ -12,6 +12,6 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CUserRequest {
-	String name, username, password, email, sdt, urlavt;
+public class DocumentRequest {
+	String name, url;
 }

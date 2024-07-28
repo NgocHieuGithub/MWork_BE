@@ -11,4 +11,5 @@ public interface UserService {
 	UserResponse UpdateUser(CUserRequest request);
 	Boolean DeleteUser(String id_user);
 	List<UserResponse> getList();
+	List<UserResponse> menUserResponses(String id_group);
 }

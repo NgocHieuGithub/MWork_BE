@@ -20,6 +20,9 @@ public class ProjectResponse {
 	String id;
 	String name;
 	Date dateCreate;
+	int type;
 	@JsonInclude(value = Include.NON_EMPTY)
 	Set<TaskResponse> tasks;	
+	@JsonInclude(value = Include.NON_NULL)
+	Set<DocResponse> docs;
 }

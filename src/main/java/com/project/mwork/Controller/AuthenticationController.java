@@ -9,6 +9,7 @@ import com.project.mwork.DTO.Request.SignInRequest;
 import com.project.mwork.DTO.Response.TokenResponse;
 import com.project.mwork.Service.ServiceImpl.AuthenticationServiceImpl;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@Tag(name = "Authenticate")
 public class AuthenticationController {
 	
 	AuthenticationServiceImpl authenticationServiceImpl;

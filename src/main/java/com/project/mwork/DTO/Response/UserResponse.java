@@ -1,5 +1,8 @@
 package com.project.mwork.DTO.Response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,5 +14,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserResponse {
-	String id, name, username, email, sdt;
+	String id, name;
+	@JsonInclude(value = Include.NON_NULL)
+	String username, email, sdt, urlavt;
 }

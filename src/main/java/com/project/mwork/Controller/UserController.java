@@ -8,6 +8,8 @@ import com.project.mwork.DTO.Request.CUserRequest;
 import com.project.mwork.DTO.Response.UserResponse;
 import com.project.mwork.Service.ServiceImpl.UserServiceImpl;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("user")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@Tag(name = "User")
 public class UserController {
 	UserServiceImpl userServiceImpl;
 	
@@ -35,7 +38,7 @@ public class UserController {
 				.result(userServiceImpl.CreateUser(request))
 				.build();
 	}
-	
+	@Operation(summary = "Infor 1 user", description = "Get infor details user by id user")
 	@GetMapping("/read")
 	public ApiResponse<UserResponse> ReadUser(@RequestParam(value = "id_user") String id_user){
 		return ApiResponse.<UserResponse>builder()
@@ -66,6 +69,11 @@ public class UserController {
 				.code(1000)
 				.result(userServiceImpl.getList())
 				.build();
+	}
+	@Operation(summary = "Members in group" ,description = "Get members in group by id group")
+	@GetMapping("/members")
+	public ApiResponse<List<UserResponse>> getMethodName(@RequestParam(value = "id_group") String id_group) {
+		return ApiResponse.<List<UserResponse>>builder().code(1000).result(userServiceImpl.menUserResponses(id_group)).build();
 	}
 	
 }

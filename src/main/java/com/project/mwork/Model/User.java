@@ -4,6 +4,7 @@ package com.project.mwork.Model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.persistence.Entity;
@@ -31,17 +32,19 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.UUID)
 	String id;
 	
-	String name, username, password, email, sdt;
+	String name, username, password, email, sdt, urlavt;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-	//@JoinColumn(name = "user_id")
 	Set<Group_details> groups = new HashSet<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	Set<Task> task = new HashSet<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "leader")
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	Set<Group> GCreated = new HashSet<>();

@@ -3,6 +3,9 @@ package com.project.mwork.DTO.Request;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,5 +22,9 @@ public class CProjectRequest {
 	String name;
 	Date dateCreate;
 	String id_group;
+	int type;
+	@JsonInclude(value = Include.NON_NULL)
 	List<CTaskRequest> taskRequests;
+	@JsonInclude(value = Include.NON_NULL)
+	List<DocumentRequest> docs;
 }

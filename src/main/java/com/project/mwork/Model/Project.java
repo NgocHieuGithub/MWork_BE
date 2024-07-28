@@ -1,9 +1,14 @@
 package com.project.mwork.Model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,13 +32,18 @@ public class Project {
 	
 	String name;
 	Date dateCreate;
-	
+	int type;
+	@JsonIgnore
 	@OneToMany(mappedBy = "project")
-	Set<Task> tasks;
+	List<Task> tasks;
 	
-	@ManyToOne
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
 	Group group;
-
+	
+	@OneToMany(mappedBy = "project", cascade = CascadeType.REMOVE)
+	List<Document> docs;
+	
 	@Override
 	public String toString() {
 		return "Project [id=" + id + ", name=" + name + ", dateCreate=" + dateCreate + ", tasks=" + tasks + ", group="

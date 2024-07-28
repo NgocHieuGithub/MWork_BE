@@ -1,4 +1,4 @@
-package com.project.mwork.DTO.Request;
+package com.project.mwork.DTO.Response;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,6 +12,6 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CUserRequest {
-	String name, username, password, email, sdt, urlavt;
+public class DocResponse {
+	String id, name, url;
 }

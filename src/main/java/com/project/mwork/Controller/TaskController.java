@@ -12,6 +12,7 @@ import com.project.mwork.DTO.Request.UTaskRequest;
 import com.project.mwork.DTO.Response.TaskResponse;
 import com.project.mwork.Service.ServiceImpl.TaskServiceImpl;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/task")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@Tag(name = "Task")
 public class TaskController {
 	
 	TaskServiceImpl taskServiceImpl;

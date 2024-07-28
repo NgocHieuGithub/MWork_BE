@@ -65,5 +65,10 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userreposiory.findAll().stream().map(usermapper::toUserResponse).toList();
 	}
+
+	@Override
+	public List<UserResponse> menUserResponses(String id_group) {
+		return userreposiory.GetListUserInGroup(id_group);
+	}
 	
 }
