@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.mwork.DTO.ApiResponse;
 import com.project.mwork.DTO.Request.CProjectRequest;
 import com.project.mwork.DTO.Response.ProjectResponse;
-import com.project.mwork.Model.Document;
-import com.project.mwork.Model.Project;
-import com.project.mwork.Repository.DocRepository;
 import com.project.mwork.Service.ServiceImpl.ProjectServiceImpl;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -28,22 +25,17 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Tag(name = "Project")
 public class ProjectController {
-	DocRepository docRepository;
 	ProjectServiceImpl projectServiceImpl;
 	@PostMapping("/create")
-	public ApiResponse<ProjectResponse> CreateProject(@RequestBody CProjectRequest request){
-		return ApiResponse.<ProjectResponse>builder().code(1000).result(projectServiceImpl.CreateProject(request)).build();
+	public ApiResponse<String> CreateProject(@RequestBody CProjectRequest request){
+		return ApiResponse.<String>builder().code(1000).result("Success").build();
 	}
 	@GetMapping("/read")
 	public ApiResponse<ProjectResponse> ReadProject(@RequestParam(value = "id_project") String id_project){
 		return ApiResponse.<ProjectResponse>builder().code(1000).result(projectServiceImpl.ReadProject(id_project)).build();
 	}
-//	@GetMapping("/getlist")
-//	public ApiResponse<List<ProjectResponse>> GetListProject(@RequestParam(value = "id_group") String id_group){
-//		return ApiResponse.<List<ProjectResponse>>builder().code(1000).result(projectServiceImpl.GetListProject(id_group)).build();
-//	}
 	@GetMapping("/getlist")
-	public ApiResponse<List<Project>> GetListProject(@RequestParam(value = "id_group") String id_group){
-		return ApiResponse.<List<Project>>builder().code(1000).result(projectServiceImpl.GetListProject1(id_group)).build();
+	public ApiResponse<List<ProjectResponse>> GetListProject1(@RequestParam(value = "id_group") String id_group){
+		return ApiResponse.<List<ProjectResponse>>builder().code(1000).result(projectServiceImpl.GetListProject(id_group)).build();
 	}
 }

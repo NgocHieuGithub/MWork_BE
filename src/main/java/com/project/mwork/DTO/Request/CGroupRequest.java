@@ -1,7 +1,5 @@
 package com.project.mwork.DTO.Request;
 
-import com.project.mwork.Model.User;
-
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

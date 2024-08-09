@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.mwork.DTO.ApiResponse;
 import com.project.mwork.DTO.Request.CUserRequest;
 import com.project.mwork.DTO.Response.UserResponse;
+import com.project.mwork.Repository.HttpClient.GoogleSheetClient;
 import com.project.mwork.Service.ServiceImpl.UserServiceImpl;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,6 +30,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Tag(name = "User")
 public class UserController {
 	UserServiceImpl userServiceImpl;
+	GoogleSheetClient googleSheetClient;
+	
+	@GetMapping("check")
+	public String GetCheck() {
+		System.out.println("access");
+		return googleSheetClient.GetClient();
+	}
 	
 	@PostMapping("/create")
 	public ApiResponse<UserResponse> CreateUser(@RequestBody CUserRequest request) {

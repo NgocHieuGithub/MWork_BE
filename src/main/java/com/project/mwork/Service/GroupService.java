@@ -3,7 +3,6 @@ package com.project.mwork.Service;
 import java.util.List;
 
 import com.project.mwork.DTO.Request.CGroupRequest;
-import com.project.mwork.DTO.Request.JGroupRequest;
 import com.project.mwork.DTO.Response.GroupResponse;
 import com.project.mwork.DTO.Response.InforGroupResponse;
 

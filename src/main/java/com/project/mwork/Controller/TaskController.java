@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.mwork.DTO.ApiResponse;
+import com.project.mwork.DTO.Request.FTaskRequest;
 import com.project.mwork.DTO.Request.UTaskRequest;
 import com.project.mwork.DTO.Response.TaskResponse;
 import com.project.mwork.Service.ServiceImpl.TaskServiceImpl;
@@ -41,6 +42,13 @@ public class TaskController {
 	@PostMapping("update")
 	public ApiResponse<TaskResponse> UpdateTask(@RequestBody UTaskRequest request) {
 		return ApiResponse.<TaskResponse>builder().code(1000).result(taskServiceImpl.UpdateResponse(request)).build();
+	}
+	@PostMapping("update1")
+	public ApiResponse<String> FinishTask(@RequestBody FTaskRequest request) {
+		if (taskServiceImpl.UpdateTask(request)) {
+			return ApiResponse.<String>builder().code(1000).result("Success").build(); 
+		}
+		return ApiResponse.<String>builder().code(1000).result("Fail").build();
 	}
 	@GetMapping("list")
 	public ApiResponse<List<TaskResponse>> GetListTask(@RequestParam(value = "id_group") String idString){

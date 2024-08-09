@@ -16,6 +16,8 @@
 	<properties>
 		<java.version>17</java.version>
 	    <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+	    <spring-cloud.version>2023.0.1</spring-cloud.version>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -68,6 +70,11 @@
 			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 		</dependency>
 		
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		
 	   <dependency>
 	      <groupId>org.springdoc</groupId>
 	      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -75,6 +82,18 @@
 	   </dependency>
 			
 	</dependencies>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>

@@ -1,19 +1,17 @@
 package com.project.mwork.Model;
 
-
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,15 +35,19 @@ public class User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-	Set<Group_details> groups = new HashSet<>();
+	Set<Group_details> groups;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-	Set<Task> task = new HashSet<>();
+	Set<Task> task;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "leader")
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-	Set<Group> GCreated = new HashSet<>();
+	Set<Group> GCreated;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.REMOVE)
+	List<Post> post;
 }

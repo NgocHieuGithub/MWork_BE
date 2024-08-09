@@ -1,6 +1,6 @@
 package com.project.mwork.DTO.Request;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -20,7 +20,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CProjectRequest {
 	String name;
-	Date dateCreate;
+	LocalDate dateCreate;
 	String id_group;
 	int type;
 	@JsonInclude(value = Include.NON_NULL)

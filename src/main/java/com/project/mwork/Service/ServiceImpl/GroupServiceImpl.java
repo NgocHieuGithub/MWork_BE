@@ -1,15 +1,11 @@
 package com.project.mwork.Service.ServiceImpl;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.project.mwork.DTO.Request.CGroupRequest;
-import com.project.mwork.DTO.Request.JGroupRequest;
 import com.project.mwork.DTO.Response.GroupResponse;
 import com.project.mwork.DTO.Response.InforGroupResponse;
 import com.project.mwork.DTO.Response.UserResponse;
@@ -25,7 +21,6 @@ import com.project.mwork.Service.GroupService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import lombok.experimental.var;
 import lombok.extern.slf4j.Slf4j;
 
 @Service

@@ -1,8 +1,7 @@
 package com.project.mwork.Model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,13 +24,14 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Project {
+public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	String id;
 	
 	String name;
-	Date dateCreate;
+	String url;
+	LocalDate dateCreate;
 	int type;
 	@JsonIgnore
 	@OneToMany(mappedBy = "project")
@@ -43,6 +43,9 @@ public class Project {
 	
 	@OneToMany(mappedBy = "project", cascade = CascadeType.REMOVE)
 	List<Document> docs;
+	
+	@ManyToOne()
+	User owner;
 	
 	@Override
 	public String toString() {

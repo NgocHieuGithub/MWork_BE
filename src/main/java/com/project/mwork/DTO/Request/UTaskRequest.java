@@ -1,7 +1,6 @@
 package com.project.mwork.DTO.Request;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,6 +16,6 @@ import lombok.experimental.FieldDefaults;
 public class UTaskRequest {
 	String id;
 	String nameTask;
-	Date deadLine;
+	LocalDate deadLine;
 	String user_id;
 }

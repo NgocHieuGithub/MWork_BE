@@ -29,7 +29,7 @@ public class Document {
 	String name, url;
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
-	Project project;
+	Post project;
 	@JsonIgnore
 	@ManyToOne
 	Task task;

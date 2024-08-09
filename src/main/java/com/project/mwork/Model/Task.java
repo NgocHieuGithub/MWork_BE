@@ -1,6 +1,6 @@
 package com.project.mwork.Model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,11 +28,11 @@ public class Task {
 	@GeneratedValue(strategy = GenerationType.UUID)
 	String id;
 	
-	String nameTask;
-	Date deadLine, finishAt, createAt;
+	String nameTask,urlfile;
+	LocalDate deadLine, finishAt, createAt;
 	@JsonIgnore
 	@ManyToOne
-	Project project;
+	Post project;
 	
 	@ManyToOne
 	User user;

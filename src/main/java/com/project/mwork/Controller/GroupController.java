@@ -2,7 +2,6 @@ package com.project.mwork.Controller;
 
 import java.util.List;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,12 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.mwork.DTO.ApiResponse;
 import com.project.mwork.DTO.Request.CGroupRequest;
-import com.project.mwork.DTO.Request.JGroupRequest;
 import com.project.mwork.DTO.Response.GroupResponse;
 import com.project.mwork.DTO.Response.InforGroupResponse;
-import com.project.mwork.Mapper.GroupMapper;
-import com.project.mwork.Model.Group;
-import com.project.mwork.Repository.GroupRepository;
 import com.project.mwork.Service.ServiceImpl.GroupServiceImpl;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -33,8 +28,6 @@ import lombok.experimental.FieldDefaults;
 public class GroupController {
 	
 	GroupServiceImpl groupImpl;
-	GroupRepository groupRepository;
-	GroupMapper groupMapper;
 	@PostMapping("/create")
 	public ApiResponse<GroupResponse> CreateGroup(@RequestBody CGroupRequest request){
 		return ApiResponse.<GroupResponse>builder()
